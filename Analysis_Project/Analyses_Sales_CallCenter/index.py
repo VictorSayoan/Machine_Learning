@@ -94,14 +94,30 @@ dbc.Row([
                 ]),
             ], style=tab_card),
         ], sm=4, lg=2),
-    dbc.Col([
-        dbc.Card([
-            dbc.CardBody([
-    
-            ]),
-        ]),
-    ]),
-])
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                        dbc.Row(
+                            dbc.Col(
+                                html.Legend('Top Consultores por Equipe')
+                                )
+                            ),
+                        dbc.Row([
+                            dbc.Col([
+                                dcc.Graph(id='graph1', className='dbc', config=config_graph)
+                                ], sm=12, md=7),
+                            dbc.Col([
+                                dcc.Graph(id='graph2', className='dbc', config=config_graph)
+                                ],sm=12, lg=7)
+                    ]),
+                ]),
+            ], style=tab_card),
+        ], sm=12, lg=7)  
+    ])
+
+
+
+
 
 
 # Run server
