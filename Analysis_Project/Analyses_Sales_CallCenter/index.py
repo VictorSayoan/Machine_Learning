@@ -142,9 +142,9 @@ dbc.Row([
                                  )
                     ),
                 ], style=tab_card)
-            ], sm=13, md=3) 
-        ])
-])
+            ], sm=12, lg=3) 
+        ], class_name='g-2 my-auto', style={'margin-top':'7px'}),
+], fluid=True, style={'heigth':'100vh'})
 
 
 
