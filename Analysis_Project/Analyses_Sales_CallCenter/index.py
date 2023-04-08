@@ -38,7 +38,7 @@ url_theme2 = dbc.themes.DARKLY
 
 # ==== Reading and cleaning File ==== #
 
-base = pd.read_csv('dataset.csv')
+base = pd.read_csv('D:\Documentos-Victor\GitHub\Machine_Learning\Analysis_Project\Analyses_Sales_CallCenter\dataset.csv')
 base_cru = base.copy()
 
 base.loc[base['Mês'] == 'Jan', 'Mês'] = 1
@@ -79,10 +79,10 @@ for i in base['Equipe'].unique():
 
 
 # ======= Layout ====== #
-app.layout = dbc.Container(children=[], fluid=True, style={'height':'100vh'})
-
-# Row 1:
-dbc.Row([
+app.layout = dbc.Container(children=[
+    
+    #Row 1:
+    dbc.Row([
     dbc.Col([
         dbc.Card([
             dbc.CardBody([
@@ -144,7 +144,11 @@ dbc.Row([
                 ], style=tab_card)
             ], sm=12, lg=3) 
         ], class_name='g-2 my-auto', style={'margin-top':'7px'}),
+]), 
 ], fluid=True, style={'heigth':'100vh'})
+
+# Row 1:
+
 
 
 
