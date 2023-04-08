@@ -69,6 +69,10 @@ base['Valor Pago'] = base['Valor Pago'].astype(int)
 
 # Criando opções para os filtros:
 options_month = [{'labels':'Ano todo', 'value':0}]
+for i, j in zip(base_cru['Mês'].unique(), base['Mês'].unique()):
+    options_month.append({'labels':i, 'value':j})
+options_month=sorted(options_month, key=lambda x: x['value'])
+
 
 
 # ======= Layout ====== #
@@ -132,11 +136,10 @@ dbc.Row([
                             input_checked_class_name="border border-sucess bg-sucess",
                         ),
                         html.Div(id='month-select', style={'text-align': 'center', 'margin-top':})
-                    ])
-                    
-            ]),
-        ]) 
-    ])
+                    ]),
+                ])
+            ]) 
+        ])
 ])
 
 
