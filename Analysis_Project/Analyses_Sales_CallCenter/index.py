@@ -80,10 +80,6 @@ for i in base['Equipe'].unique():
 
 # ======= Layout ====== #
 app.layout = dbc.Container(children=[
-    # Armazenamento de dataset
-    # dcc.Store(id='dataset', data=df_store),
-
-    # Layout
     # Row 1
     dbc.Row([
         dbc.Col([
