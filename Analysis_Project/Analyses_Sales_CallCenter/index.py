@@ -89,12 +89,19 @@ dbc.Row([
                         ])
                         ], style={'margin-top':'10px'}),
                 dbc.Row([
-                    dbc.Button("Visite o meu GIT", href="https://github.com/VictorSayoan", target="")
+                    dbc.Button("Visite o meu GitHub", href="https://github.com/VictorSayoan", target="_blank")
                 ], style={'margin-top':'10px'}),
                 ]),
+            ], style=tab_card),
+        ], sm=4, lg=2),
+    dbc.Col([
+        dbc.Card([
+            dbc.CardBody([
+    
             ]),
         ]),
     ]),
+])
 
 
 # Run server
