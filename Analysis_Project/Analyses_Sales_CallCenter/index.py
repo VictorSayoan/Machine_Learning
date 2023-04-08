@@ -55,6 +55,7 @@ base.loc[base['Mês'] == 'Nov', 'Mês'] = 11
 base.loc[base['Mês'] == 'Dez', 'Mês'] = 12
 
 base['Mês'] = base['Mês'].astype(int)
+base['Dia'] = base['Dia'].astype(int)
 
 base['Chamadas Realizadas']=base['Chamadas Realizadas'].astype(int)
 
@@ -64,6 +65,10 @@ base['Status de Pagamento'] = base['Status de Pagamento'].astype(int)
 
 base['Valor Pago'] = base['Valor Pago'].str.lstrip('R$ ')
 base['Valor Pago'] = base['Valor Pago'].astype(int)
+
+
+# Criando opções para os filtros:
+options_month = [{'labels':'Ano todo', 'value':0}]
 
 
 # ======= Layout ====== #
@@ -108,12 +113,31 @@ dbc.Row([
                                 ], sm=12, md=7),
                             dbc.Col([
                                 dcc.Graph(id='graph2', className='dbc', config=config_graph)
-                                ],sm=12, lg=7)
+                                ],sm=12, md=5)
                     ]),
                 ]),
             ], style=tab_card),
-        ], sm=12, lg=7)  
+        ], sm=12, lg=7),
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    dbc.Row([
+                        html.H5('Escolha o Mês'),
+                        dbc.RadioItems(
+                            id="radio-month",
+                            options=options_month,
+                            value=0,
+                            inline=True,
+                            label_checked_class_name="text-sucess",
+                            input_checked_class_name="border border-sucess bg-sucess",
+                        ),
+                        html.Div(id='month-select', style={'text-align': 'center', 'margin-top':})
+                    ])
+                    
+            ]),
+        ]) 
     ])
+])
 
 
 
