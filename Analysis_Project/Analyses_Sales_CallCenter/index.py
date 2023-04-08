@@ -36,8 +36,65 @@ template_theme2 = "darkly"
 url_theme1 = dbc.themes.FLATLY
 url_theme2 = dbc.themes.DARKLY
 
+# ==== Reading and cleaning File ==== #
+
+base = pd.read_csv('dataset.csv')
+base_cru = base.copy()
+
+base.loc[base['Mês'] == 'Jan', 'Mês'] = 1
+base.loc[base['Mês'] == 'Fev', 'Mês'] = 2
+base.loc[base['Mês'] == 'Mar', 'Mês'] = 3
+base.loc[base['Mês'] == 'Abr', 'Mês'] = 4
+base.loc[base['Mês'] == 'Mai', 'Mês'] = 5
+base.loc[base['Mês'] == 'Jun', 'Mês'] = 6
+base.loc[base['Mês'] == 'Jul', 'Mês'] = 7
+base.loc[base['Mês'] == 'Ago', 'Mês'] = 8
+base.loc[base['Mês'] == 'Set', 'Mês'] = 9
+base.loc[base['Mês'] == 'Out', 'Mês'] = 10
+base.loc[base['Mês'] == 'Nov', 'Mês'] = 11
+base.loc[base['Mês'] == 'Dez', 'Mês'] = 12
+
+base['Mês'] = base['Mês'].astype(int)
+
+base['Chamadas Realizadas']=base['Chamadas Realizadas'].astype(int)
+
+base.loc[base['Status de Pagamento'] == 'Pago', 'Status de Pagamento'] = 1
+base.loc[base['Status de Pagamento'] == 'Não pago', 'Status de Pagamento'] = 0 
+base['Status de Pagamento'] = base['Status de Pagamento'].astype(int)
+
+base['Valor Pago'] = base['Valor Pago'].str.lstrip('R$ ')
+base['Valor Pago'] = base['Valor Pago'].astype(int)
+
+
 # ======= Layout ====== #
 app.layout = dbc.Container(children=[], fluid=True, style={'height':'100vh'})
+
+# Row 1:
+dbc.Row([
+    dbc.Col([
+        dbc.Card([
+            dbc.CardBody([
+                dbc.Row([
+                    dbc.Col([
+                        html.Legend("Sales Analytics")
+                    ], sm=8),
+                    dbc.Col([
+                        html.I(className='fa fa-balance-scele', style={'font-size':'300%'})
+                    ], sm=4, align="center"),
+                ]),
+                dbc.Row([
+                    dbc.Col([
+                        ThemeSwitchAIO(aio_id="theme", themes=[url_theme1, url_theme2]),
+                        html.Legend("Data Analises")
+                        ])
+                        ], style={'margin-top':'10px'}),
+                dbc.Row([
+                    dbc.Button("Visite o meu GIT", href="https://github.com/VictorSayoan", target="")
+                ], style={'margin-top':'10px'}),
+                ]),
+            ]),
+        ]),
+    ]),
 
 
 # Run server
