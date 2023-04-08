@@ -147,14 +147,6 @@ app.layout = dbc.Container(children=[
 ]), 
 ], fluid=True, style={'heigth':'100vh'})
 
-# Row 1:
-
-
-
-
-
-
-
 # Run server
 if __name__ == 'main':
     app.run_server(debug=True, port=8051)
