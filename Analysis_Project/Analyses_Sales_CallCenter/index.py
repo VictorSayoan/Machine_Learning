@@ -128,7 +128,7 @@ dbc.Row([
         dbc.Col([
             dbc.Card([
                 dbc.CardBody([
-                    dbc.Row([
+                    dbc.Row(
                         html.H5('Escolha o Mês'),
                         dbc.RadioItems(
                             id="radio-month",
@@ -138,10 +138,11 @@ dbc.Row([
                             label_checked_class_name="text-sucess",
                             input_checked_class_name="border border-sucess bg-sucess",
                         ),
-                        html.Div(id='month-select', style={'text-align': 'center', 'margin-top': '30px'}, className='dbc')
-                    ]),
-                ])
-            ]) 
+                        html.Div(id='month-select', style={'text-align': 'center', 'margin-top': '30px'}, className='dbc'
+                                 )
+                    ),
+                ], style=tab_card)
+            ], sm=13, md=3) 
         ])
 ])
 
