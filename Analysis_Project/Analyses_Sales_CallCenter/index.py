@@ -145,7 +145,7 @@ app.layout = dbc.Container(children=[
         ], sm=12, lg=3)
     ], className='g-2 my-auto', style={'margin-top': '7px'}),
 
-# Row2
+    # Row2
     dbc.Row([
         dbc.Col([
             dbc.Row([
