@@ -148,5 +148,5 @@ app.layout = dbc.Container(children=[
 ], fluid=True, style={'heigth':'100vh'})
 
 # Run server
-if __name__ == 'main':
+if __name__ == '__main__':
     app.run_server(debug=True)
