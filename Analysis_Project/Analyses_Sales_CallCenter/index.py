@@ -15,7 +15,7 @@ server = app.server
 
 # ======= Styles ====== #
 
-tab_card = {'heigth' : '100%'}
+tab_card = {'height': '100%'}
 
 main_config = {
     "hovermode": "x unified",
@@ -28,7 +28,6 @@ main_config = {
                 "bgcolor": "rgba(0,0,0,0.5)"},
     "margin": {"l":10, "r":10, "t":10, "b":10}
 }
-
 config_graph={"displayModeBr":False, "ShowTips":False}
 
 template_theme1 = "flatly"
@@ -145,6 +144,30 @@ app.layout = dbc.Container(children=[
             ], style=tab_card)
         ], sm=12, lg=3)
     ], className='g-2 my-auto', style={'margin-top': '7px'}),
+
+# Row 2:
+    dbc.Row([
+        dbc.Col([
+            dbc.Row([
+                dbc.Col([
+                    dbc.Card([
+                        dbc.CardBody([
+                            dcc.Graph(id='graph3', className='dbc', config=config_graph)
+                        ]),
+                    ], style=tab_card),
+                ]),
+            ]),
+        ]),
+            dbc.Row([
+                dbc.Col([
+                    dbc.Card([
+                        dbc.CardBody([
+                            dcc.Graph(id='graph4', className='dbc', config=config_graph)
+                        ]),
+                    ], style=tab_card),
+                ]),
+            ], className='g-2 my-auto', style={'margin-top': '7px'}),
+    ])
 ], fluid=True, style={'heigth':'100vh'})
 
 # Run server
