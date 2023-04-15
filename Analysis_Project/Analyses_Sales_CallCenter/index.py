@@ -140,11 +140,11 @@ app.layout = dbc.Container(children=[
                     dbc.Row([
                         dbc.Col([
                             ThemeSwitchAIO(aio_id="theme", themes=[url_theme1, url_theme2]),
-                            html.Legend("Asimov Academy")
+                            html.Legend("Sales")
                         ])
                     ], style={'margin-top': '10px'}),
                     dbc.Row([
-                        dbc.Button("Visite o Site", href="https://asimov.academy/", target="_blank")
+                        dbc.Button("Visite o Site", href="https://github.com/VictorSayoan", target="_blank")
                     ], style={'margin-top': '10px'})
                 ])
             ], style=tab_card)
