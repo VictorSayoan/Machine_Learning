@@ -140,7 +140,6 @@ app.layout = dbc.Container(children=[
                     dbc.Row([
                         dbc.Col([
                             ThemeSwitchAIO(aio_id="theme", themes=[url_theme1, url_theme2]),
-                            html.Legend("Sales")
                         ])
                     ], style={'margin-top': '10px'}),
                     dbc.Row([
