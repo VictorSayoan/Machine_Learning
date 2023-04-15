@@ -286,6 +286,7 @@ app.layout = dbc.Container(children=[
 
 # ======= CallBack ====== #
 # Graph1 e Graph2:
+# Top Consultores:
 @app.callback(
     Output('graph1', 'figure'),
     Output('graph2', 'figure'),
