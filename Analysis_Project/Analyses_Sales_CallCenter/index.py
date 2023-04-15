@@ -1,11 +1,13 @@
+import dash
 from dash import html, dcc, Input, Output
 import dash_bootstrap_components as dbc
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
 
+
+from app import *
 from dash_bootstrap_templates import ThemeSwitchAIO # Alterar o tema de fundo do dash (Branco ou Preto)
-import dash
 
 FONT_AWESOME=["https://use.fontawesome.com/releases/v5.10.2/css/all.css"]
 app=dash.Dash(__name__, external_stylesheets=FONT_AWESOME)
