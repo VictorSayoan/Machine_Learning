@@ -28,7 +28,7 @@ main_config = {
                 "bgcolor": "rgba(0,0,0,0.5)"},
     "margin": {"l":10, "r":10, "t":10, "b":10}
 }
-config_graph={"displayModeBr":False, "ShowTips":False}
+config_graph={"displayModeBar":False, "ShowTips":False}
 
 template_theme1 = "flatly"
 template_theme2 = "darkly"
