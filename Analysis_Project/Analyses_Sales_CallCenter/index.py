@@ -297,14 +297,16 @@ def graph1(month, toggle):
     template = template_theme1 if toggle else template_theme2
 
     mask = month_filter(month)
-    df_1 = df.loc[mask]
+    base1 = base.loc[mask]
 
-    df_1 = df_1.groupby(['Equipe', 'Consultor'])['Valor Pago'].sum()
-    df_1 = df_1.sort_values(ascending=False)
-    df_1 = df_1.groupby('Equipe').head(1).reset_index()
+    base1 = base.groupby(['Equipe', 'Consultor'])['Valor Pago'].sum()
+    base1 = base1.sort_values(ascending=False)
+    base1 = base1.reset_index()
+    base1 = base1.groupby('Equipe').head(1).reset_index()
 
-    fig2 = go.Figure(go.Pie(labels=df_1['Consultor'] + ' - ' + df_1['Equipe'], values=df_1['Valor Pago'], hole=.6))
-    fig1 = go.Figure(go.Bar(x=df_1['Consultor'], y=df_1['Valor Pago'], textposition='auto', text=df_1['Valor Pago']))
+
+    fig1 = go.Figure(go.Bar(x=base1['Consultor'], y=base1['Valor Pago'], textposition='auto', text=base1['Valor Pago']))
+    fig2 = go.Figure(go.Pie(labels=base1['Equipe'] + ' - ' + base1['Consultor'], values=base1['Valor Pago'], hole=0.6))
     fig1.update_layout(main_config, height=200, template=template)
     fig2.update_layout(main_config, height=200, template=template, showlegend=False)
 
