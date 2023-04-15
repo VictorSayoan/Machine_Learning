@@ -198,6 +198,44 @@ app.layout = dbc.Container(children=[
             ], style=tab_card)
         ], sm=12, lg=3)
     ], className='g-2 my-auto', style={'margin-top': '7px'}),
+    # Row 3:
+    dbc.Row([
+        dbc.Col([
+          dbc.Card([
+            dbc.CardBody([
+                html.H4('Distribuição de Propaganda'),
+                dcc.Graph(id='graph9', className='dbc', config=config_graph)
+            ]),
+          ], style=tab_card), 
+        ], sm=12, lg=2),
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                    html.H4('Valores de Propaganda Convertidos Por Mês'),
+                    dcc.Graph(id='graph10', className='dbc', config=config_graph)
+                ]),
+            ], style=tab_card),
+        ], sm=12, lg=2),
+        dbc.Col([
+            dbc.Card([
+                dbc.CardBody([
+                        dcc.Graph(id='graph11', className='dbc', config=config_graph)
+                ]),
+            ], style=tab_card),
+        ], sm=12, lg=5),
+        dbc.Col([
+            html.H5('Escolha a Equipe'),
+            dbc.RadioItems(
+                id='radio-team',
+                options=options_time,
+                value=0,
+                inline=True,
+                labelCheckedClassName="text-warning",
+                inputCheckedClassName="border border-warning bg-warning",
+            ),
+            html.Div(id='team-select', style={'text-align': 'center', 'margin-top': '30px'}, className='dbc')
+        ], sm=12, lg=3)
+    ])
 
 ], fluid=True, style={'heigth':'100vh'})
 
