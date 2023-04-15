@@ -283,7 +283,7 @@ app.layout = dbc.Container(children=[
 ], fluid=True, style={'heigth':'100vh'})
 
 # ======= CallBack ====== #
-
+# Graph1 e Graph2:
 app.callback(
     Output('graph1', 'figure'),
     Output('graph2', 'figure'),
