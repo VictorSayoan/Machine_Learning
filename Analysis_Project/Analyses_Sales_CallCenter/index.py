@@ -72,9 +72,9 @@ for i, j in zip(base_cru['Mês'].unique(), base['Mês'].unique()):
     options_month.append({'label':i, 'value':j})
 options_month=sorted(options_month, key=lambda x: x['value'])
 
-options_time = [{'label':'Todos Equipes', 'value':0}]
+options_tems = [{'label':'Todos Equipes', 'value':0}]
 for i in base['Equipe'].unique():
-    options_time.append({'label':i, 'value':i})
+    options_team.append({'label':i, 'value':i})
 
 
 # ======= Layout ====== #
@@ -227,7 +227,7 @@ app.layout = dbc.Container(children=[
             html.H5('Escolha a Equipe'),
             dbc.RadioItems(
                 id='radio-team',
-                options=options_time,
+                options=options_tems,
                 value=0,
                 inline=True,
                 labelCheckedClassName="text-warning",
