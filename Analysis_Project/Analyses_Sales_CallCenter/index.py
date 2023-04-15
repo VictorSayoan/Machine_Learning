@@ -95,11 +95,11 @@ app.layout = dbc.Container(children=[
                     dbc.Row([
                         dbc.Col([
                             ThemeSwitchAIO(aio_id="theme", themes=[url_theme1, url_theme2]),
-                            html.Legend("Data Analytics")
+                            html.Legend("Asimov Academy")
                         ])
                     ], style={'margin-top': '10px'}),
                     dbc.Row([
-                        dbc.Button("Visite o Site", href="https://github.com/VictorSayoan", target="_blank")
+                        dbc.Button("Visite o Site", href="https://asimov.academy/", target="_blank")
                     ], style={'margin-top': '10px'})
                 ])
             ], style=tab_card)
@@ -239,6 +239,9 @@ app.layout = dbc.Container(children=[
 
 ], fluid=True, style={'heigth':'100vh'})
 
+# ======= CallBack ====== #
+
+#app.callback()
 # Run server
 if __name__ == '__main__':
     app.run_server(debug=True)
