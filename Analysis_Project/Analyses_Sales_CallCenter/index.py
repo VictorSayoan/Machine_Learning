@@ -304,8 +304,8 @@ def graph1(month, toggle):
     base1 = base1.groupby('Equipe').head(1).reset_index()
 
 
-    fig1 = go.Figure(go.Bar(x=base1['Consultor'], y=base1['Valor Pago'], textposition='auto', text=base1['Valor Pago']))
     fig2 = go.Figure(go.Pie(labels=base1['Equipe'] + ' - ' + base1['Consultor'], values=base1['Valor Pago'], hole=0.6))
+    fig1 = go.Figure(go.Bar(x=base1['Consultor'], y=base1['Valor Pago'], textposition='auto', text=base1['Valor Pago']))
     fig1.update_layout(main_config, height=200, template=template)
     fig2.update_layout(main_config, height=200, template=template, showlegend=False)
 
