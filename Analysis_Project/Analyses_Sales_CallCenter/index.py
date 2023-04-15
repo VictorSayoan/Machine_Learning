@@ -76,6 +76,49 @@ options_team = [{'label':'Todos Equipes', 'value':0}]
 for i in base['Equipe'].unique():
     options_team.append({'label':i, 'value':i})
 
+def month_filter(month):
+    if month == 0:
+        mask = df['Mês'].isin(df['Mês'].unique())
+    else:
+        mask = df['Mês'].isin([month])
+    return mask
+
+def team_filter(team):
+    if team == 0:
+        mask = df['Equipe'].isin(df['Equipe'].unique())
+    else:
+        mask = df['Equipe'].isin([team])
+    return mask
+
+def convert_to_text(month):
+    match month:
+        case 0:
+            x = 'Ano Todo'
+        case 1:
+            x = 'Janeiro'
+        case 2:
+            x = 'Fevereiro'
+        case 3:
+            x = 'Março'
+        case 4:
+            x = 'Abril'
+        case 5:
+            x = 'Maio'
+        case 6:
+            x = 'Junho'
+        case 7:
+            x = 'Julho'
+        case 8:
+            x = 'Agosto'
+        case 9:
+            x = 'Setembro'
+        case 10:
+            x = 'Outubro'
+        case 11:
+            x = 'Novembro'
+        case 12:
+            x = 'Dezembro'
+    return x
 
 # ======= Layout ====== #
 app.layout = dbc.Container(children=[
@@ -241,7 +284,34 @@ app.layout = dbc.Container(children=[
 
 # ======= CallBack ====== #
 
-#app.callback()
+app.callback(
+    Output('graph1', 'figure'),
+    Output('graph2', 'figure'),
+    Output('month-select', 'children'),
+    Input('radio-month', 'value'),
+    Output('graph3', 'figure'),
+    Input(ThemeSwitchAIO.ids.switch("theme"), "value")
+)
+
+def graph1(month, toggle):
+    template = template_theme1 if toggle else template_theme2
+
+    mask = month_filter(month)
+    df_1 = df.loc[mask]
+
+    df_1 = df_1.groupby(['Equipe', 'Consultor'])['Valor Pago'].sum()
+    df_1 = df_1.sort_values(ascending=False)
+    df_1 = df_1.groupby('Equipe').head(1).reset_index()
+
+    fig2 = go.Figure(go.Pie(labels=df_1['Consultor'] + ' - ' + df_1['Equipe'], values=df_1['Valor Pago'], hole=.6))
+    fig1 = go.Figure(go.Bar(x=df_1['Consultor'], y=df_1['Valor Pago'], textposition='auto', text=df_1['Valor Pago']))
+    fig1.update_layout(main_config, height=200, template=template)
+    fig2.update_layout(main_config, height=200, template=template, showlegend=False)
+
+    select = html.H1(convert_to_text(month))
+
+    return fig1, fig2, select
+
 # Run server
 if __name__ == '__main__':
     app.run_server(debug=True)
