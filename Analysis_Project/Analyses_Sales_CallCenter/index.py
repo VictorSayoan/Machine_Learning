@@ -286,7 +286,7 @@ app.layout = dbc.Container(children=[
 
 # ======= CallBack ====== #
 # Graph1 e Graph2:
-app.callback(
+@app.callback(
     Output('graph1', 'figure'),
     Output('graph2', 'figure'),
     Output('month-select', 'children'),
