@@ -78,16 +78,16 @@ for i in base['Equipe'].unique():
 
 def month_filter(month):
     if month == 0:
-        mask = df['Mês'].isin(df['Mês'].unique())
+        mask = base['Mês'].isin(base['Mês'].unique())
     else:
-        mask = df['Mês'].isin([month])
+        mask = base['Mês'].isin([month])
     return mask
 
 def team_filter(team):
     if team == 0:
-        mask = df['Equipe'].isin(df['Equipe'].unique())
+        mask = base['Equipe'].isin(base['Equipe'].unique())
     else:
-        mask = df['Equipe'].isin([team])
+        mask = base['Equipe'].isin([team])
     return mask
 
 def convert_to_text(month):
@@ -289,7 +289,6 @@ app.callback(
     Output('graph2', 'figure'),
     Output('month-select', 'children'),
     Input('radio-month', 'value'),
-    Output('graph3', 'figure'),
     Input(ThemeSwitchAIO.ids.switch("theme"), "value")
 )
 
